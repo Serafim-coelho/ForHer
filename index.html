@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Princesa ❤️</title>
+
+    <link rel="icon" type="image/png" href="img/icon/coracao.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+
+            /* mudar o fundo para azul claro e os cliques para  roxo suave */
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --card-black: #111111;
+            --accent-red: #9900ff;
+            --deep-red: #4700cc;
+            --dark-red: #006999;
+            --neon-red: #17dcff;
+            --gold: #bf0feb;
+            --silver: #c0c0c0;
+            --white: #ffffff;
+            --glass-bg: rgba(17, 17, 17, 0.8);
+            --glass-border: rgba(117, 88, 245, 0.3);
+            
+            /* Variável nome */
+            --girlfriend-name: "Rafaela";
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 50%, #2a0a0a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            cursor: none;
+        }
+            button,
+            a,
+            input,
+            textarea,
+            select,
+            .surprise-btn {
+            cursor: none !important;
+        }
+
+
+        /* Cursor personalizado dark */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--accent-red), var(--deep-red));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: none;
+            will-change: transform;
+            box-shadow: 0 0 20px var(--accent-red);
+            border: 2px solid var(--neon-red);
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: rgba(22, 209, 241, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Partículas vermelhas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, var(--accent-red), transparent);
+            border-radius: 50%;
+            animation: float-particle 8s linear infinite;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+    .custom-cursor {
+        display: none;
+    }
+}
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .moment-image {
+            width: 420px;              /* tamanho delicado */
+            max-width: 100%;
+            border-radius: 18px;       /* cantos bem suaves */
+            display: block;
+            margin: 16px auto 10px;    /* centralizar */
+    
+            box-shadow: 
+            0 10px 25px rgba(0, 0, 0, 0.35),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+
+            transition: 
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+        
+        .moment-image-solo {
+            width: 300px;
+            max-width: 100%;
+            aspect-ratio: 1 / 1;   /* 🔥 força o mesmo tamanho */
+            object-fit: cover;     /* corta sem deformar */
+            border-radius: 18px;
+            display: block;
+            margin: 16px auto 10px;
+
+            transform: scale(1.04);
+            box-shadow: 
+            0 15px 35px rgba(0, 0, 0, 0.45),
+            0 0 0 1px rgba(195, 6, 233, 0.226);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(0, 132, 255, 0.466),
+                0 0 25px rgba(212, 0, 255, 0.329);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+                transform: scale(1.05);
+                box-shadow:
+                0 14px 30px rgba(35, 7, 161, 0.5),
+                0 0 0 1px rgba(151, 11, 233, 0.507);
+        }
+
+        .moment-image:hover {
+            transform: scale(1.04);
+            box-shadow: 
+            0 15px 35px rgba(0, 0, 0, 0.45),
+            0 0 0 1px rgba(195, 6, 233, 0.226);
+        }
+
+        .moments-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap; /* quebra no mobile */
+        }
+        .moments-row .photo-frame {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            max-width: 1100px;
+            margin: 0 auto;   /* ISSO cria a simetria */
+            padding: 0 20px;
+        }
+
+        /* Galeria de momentos — layout simétrico */
+        .moments-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+            grid-template-columns: repeat(3, 1fr);
+                gap: 30px; 
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+        }
+
+        /* Padronização das imagens */
+        .moments-gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;      /* FORÇA SIMETRIA */
+            object-fit: cover;        /* corta sem deformar */
+            border-radius: 16px;
+
+            
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(0, 132, 255, 0.466),
+                0 0 25px rgba(212, 0, 255, 0.329);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+    /* Hover sutil (opcional, mas lindo) */
+    .moments-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow:
+        0 14px 30px rgba(35, 7, 161, 0.5),
+        0 0 0 1px rgba(151, 11, 233, 0.507);
+    }
+
+        .adesivo {
+            width: 150px;
+            display: block;
+            margin: 0 auto 40px;
+            animation: adesivo-bounce 3s ease-in-out infinite;
+        }
+
+        /* Efeito de ondas dark */
+        .wave-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(175, 58, 179, 0.719) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(54, 42, 231, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(41, 91, 230, 0.575) 0%, transparent 50%);
+            animation: wave-move 10s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes wave-move {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(3deg); }
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            z-index: 20;
+        }
+
+        /* Header dark theme */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            animation: slideDown 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+
+            width: 220px;
+            height: 4px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--accent-red),
+                var(--gold),
+                var(--accent-red),
+                transparent
+            );
+
+    border-radius: 4px;
+    animation: glow-line 3s ease-in-out infinite alternate;
+}
+
+        @keyframes glow-line {
+            0% { box-shadow: 0 0 5px var(--accent-red); }
+            100% { box-shadow: 0 0 25px var(--accent-red), 0 0 35px var(--neon-red); }
+        }
+
+        .header h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent-red), var(--gold), var(--neon-red), var(--silver));
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite, text-glow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes text-glow {
+            0% { filter: drop-shadow(0 0 10px var(--accent-red)); }
+            100% { filter: drop-shadow(0 0 25px var(--accent-red)) drop-shadow(0 0 35px var(--neon-red)); }
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: pulse-text 3s ease-in-out infinite;
+        }
+
+        /*  frase com efeito  */
+        .header-dois p {
+            font-size: 1.4rem;
+            color: var(--silver);
+            font-weight: 600;
+            letter-spacing: 1px;
+            animation: pulse-text 3s ease-in-out infinite;
+            background: linear-gradient(90deg, 
+            transparent, 
+            rgba(234, 0, 255, 0.658), 
+            rgba(0, 174, 255, 0.753), 
+            transparent);
+        }
+
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* Nome */
+        .girlfriend-name::before {
+            content: var(--girlfriend-name);
+        }
+
+        /* Card principal dark theme melhorado */
+        .love-card {
+            background: linear-gradient(135deg, 
+                rgba(13, 2, 75, 0.95) 0%, 
+                rgba(3, 55, 133, 0.9) 50%, 
+                rgba(31, 3, 136, 0.95) 100%);
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 0, 64, 0.3),
+                0 0 40px rgba(255, 0, 64, 0.15),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 0, 64, 0.4);
+            animation: card-float 8s ease-in-out infinite;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .love-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.9),
+                inset 0 1px 0 rgba(255, 0, 64, 0.4),
+                0 0 60px rgba(255, 0, 64, 0.25),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 0, 64, 0.6);
+        }
+
+        @keyframes card-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .love-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 0, 64, 0.1) 0%, 
+                transparent 30%, 
+                transparent 70%, 
+                rgba(255, 0, 64, 0.1) 100%);
+            border-radius: 25px;
+            z-index: -1;
+            animation: subtle-glow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtle-glow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        .love-card h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--white), var(--silver), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            animation: title-shine 2s ease-in-out infinite;
+        }
+
+        @keyframes title-shine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .love-message {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--silver);
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            animation: message-glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes message-glow {
+            0% { text-shadow: 0 0 10px rgba(192, 192, 192, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(192, 192, 192, 0.6), 0 0 30px rgba(255, 0, 64, 0.2); }
+        }
+
+        /* Botão dark theme */
+        .surprise-btn {
+            background: linear-gradient(45deg, var(--accent-red), var(--deep-red));
+            color: var(--white);
+            border: none;
+            padding: 25px 50px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            margin: 40px 0;
+            box-shadow: 
+                0 15px 35px rgba(0, 140, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: btn-pulse 3s ease-in-out infinite;
+            border: 2px solid var(--neon-red);
+        }
+
+        .surprise-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(204, 0, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .surprise-btn:hover::before {
+            left: 100%;
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(0, 153, 255, 0.6),
+                0 0 30px var(--gold);
+        }
+
+        @keyframes btn-pulse {
+            0%, 100% { box-shadow: 0 15px 35px rgba(0, 110, 255, 0.4); }
+            50% { box-shadow: 0 15px 35px rgba(98, 0, 255, 0.6), 0 0 20px var(--gold); }
+        }
+
+        /* Galeria de fotos - 3 por linha mobile-first */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 60px 0;
+            perspective: 1000px;
+        }
+
+        .photo-frame {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, 
+                var(--card-black) 0%, 
+                var(--secondary-black) 50%, 
+                var(--card-black) 100%);
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(0, 132, 255, 0.3),
+                0 0 25px rgba(212, 0, 255, 0.274);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: frame-float 5s ease-in-out infinite;
+            border: 1px solid rgba(0, 204, 255, 0.4);
+        }
+
+        .photo-frame:nth-child(1) { animation-delay: 0s; }
+        .photo-frame:nth-child(2) { animation-delay: 0.3s; }
+        .photo-frame:nth-child(3) { animation-delay: 0.6s; }
+        .photo-frame:nth-child(4) { animation-delay: 0.9s; }
+        .photo-frame:nth-child(5) { animation-delay: 1.2s; }
+        .photo-frame:nth-child(6) { animation-delay: 1.5s; }
+
+        @keyframes frame-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            filter: brightness(0.95) contrast(1.15) saturate(1.1);
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(89, 0, 255, 0.459) 0%, 
+                transparent 50%, 
+                rgba(5, 176, 255, 0.438) 100%);
+            border-radius: 20px;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .photo-frame:hover::before {
+            opacity: 1;
+            animation: photo-shine 1s ease-in-out;
+        }
+
+        @keyframes photo-shine {
+            0% { transform: translateX(-100%) skew(-15deg); }
+            100% { transform: translateX(100%) skew(-15deg); }
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(111, 0, 255, 0.4),
+                inset 0 1px 0 rgba(17, 0, 255, 0.5);
+            border-color: rgba(0, 110, 255, 0.8);
+        }
+
+        .photo-frame:hover img {
+            filter: brightness(1.1) contrast(1.25) saturate(1.2);
+            transform: scale(1.02);
+        }
+
+        /* Texto de fallback melhorado */
+        .photo-frame[data-fallback] {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent-red);
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(7, 151, 247, 0.9) 0%, 
+                rgba(73, 0, 63, 0.95) 50%, 
+                rgba(136, 1, 96, 0.9) 100%);
+        }
+
+        .photo-frame[data-fallback] small {
+            font-size: 0.7rem;
+            color: var(--silver);
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        /* Mensagem especial dark theme */
+        .special-message {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 60px 0;
+            border: 2px solid var(--glass-border);
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 0, 221, 0.356), 
+                rgba(0, 174, 255, 0.411), 
+                transparent);
+            animation: message-wave 4s ease-in-out infinite;
+        }
+
+        @keyframes message-wave {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .special-message.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.7),
+                0 0 40px rgba(247, 0, 255, 0.2);
+        }
+
+        .special-message h3 {
+            background: linear-gradient(45deg, var(--accent-red), var(--gold), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: special-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes special-glow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3) drop-shadow(0 0 10px var(--accent-red)); }
+        }
+
+        .special-message p {
+            color: var(--silver);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* Footer dark theme */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--silver);
+            font-size: 1.3rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--gold), var(--accent-red));
+            border-radius: 1px;
+            animation: footer-line 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes footer-line {
+            0% { width: 100px; opacity: 0.5; }
+            100% { width: 300px; opacity: 1; }
+        }
+
+        .heart-beat {
+            color: var(--accent-red);
+            animation: mega-heartbeat 1s ease-in-out infinite;
+            font-size: 2rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px var(--accent-red));
+        }
+
+        @keyframes mega-heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3) rotate(5deg); }
+            50% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.2) rotate(3deg); }
+        }
+
+        /* Efeitos de explosão dark */
+        .heart-explosion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 2rem;
+            animation: heart-explode 2s ease-out forwards;
+        }
+
+        @keyframes heart-explode {
+            0% { 
+                transform: scale(0) rotate(0deg); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: scale(1.5) rotate(180deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: scale(0.5) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Loading dark theme */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 2s ease-in-out 3s forwards;
+        }
+
+        .loading-heart {
+            font-size: 4rem;
+            animation: loading-pulse 1s ease-in-out infinite;
+            color: var(--accent-red);
+            filter: drop-shadow(0 0 20px var(--accent-red));
+        }
+
+        @keyframes loading-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5) rotate(45deg); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* Responsivo melhorado - Mobile First */
+        @media (max-width: 480px) {
+            .header h1 { 
+                font-size: 2.8rem; 
+                margin-bottom: 15px;
+            }
+            .header p { 
+                font-size: 1.1rem; 
+            }
+            .love-card { 
+                padding: 30px 20px; 
+                margin: 30px 0;
+                border-radius: 20px;
+            }
+            .love-card h2 { 
+                font-size: 2.2rem; 
+                margin-bottom: 25px;
+            }
+            .love-message { 
+                font-size: 1.1rem; 
+                margin-bottom: 30px;
+            }
+            .surprise-btn {
+                padding: 18px 35px;
+                font-size: 1.2rem;
+            }
+            .photo-gallery { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px; 
+                margin: 40px 0;
+            }
+            .photo-frame {
+                border-radius: 15px;
+                padding: 6px;
+            }
+            .photo-frame img {
+                border-radius: 10px;
+            }
+            .photo-frame[data-fallback] {
+                font-size: 1.5rem;
+            }
+            .photo-frame[data-fallback] small {
+                font-size: 0.6rem;
+                margin-top: 5px;
+            }
+            .special-message {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+            .special-message h3 {
+                font-size: 2rem;
+            }
+            .special-message p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .header h1 { 
+                font-size: 3.5rem; 
+            }
+            .love-card { 
+                padding: 50px 35px; 
+            }
+            .love-card h2 { 
+                font-size: 2.8rem; 
+            }
+            .photo-gallery { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px; 
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .photo-gallery { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px; 
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .photo-gallery { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px; 
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+
+
+        /* Animações de entrada */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .image-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0, 207, 255, 0.6);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Overlay de loading -->
+    <div class="loading-overlay">
+        <div class="loading-heart">❤️</div>
+    </div>
+
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"></div>
+
+    <!-- Partículas de fundo -->
+    <div class="particles"></div>
+    
+    <!-- Efeito de ondas -->
+    <div class="wave-bg"></div>
+
+
+    <div class="image-modal" id="imageModal">
+        <img id="modalImg" src="">
+    </div>
+                
+
+    <!-- Icones do Discord-->
+
+
+
+
+    <!--                       Para <span class="girlfriend-name"></span>         -->
+
+    <div class="container">
+        <header class="header">
+            <h1>Rafaela❤️</h1>
+            <p>Leia com carinho, estas são as palavras do coração ❤️</p>
+        </header>
+        <main class="love-card">
+            <h2>Oii Minha Princesa 💕</h2>
+            <div class="love-message">
+                <p><span class="girlfriend-name"></span>, Escrevo essa carta para desejar um Feliz Natal para nós dois, mais como uma declaração do amor que sinto por você e agradecimento por você estar aqui, porque eu devo agradecer? bom, eu já te contei sobre meus relacionamentos passados e sobre algumas situações que vivi, mas existe algo que nunca cheguei a te dizer com calma: todos os meus términos aconteceram no mês de dezembro. Desde sempre, esse mês carrega um peso estranho pra mim, não sei se você acredita, mas a chamada “teoria de dezembro” sempre pareceu se confirmar na minha vida, um ciclo que se repete, como se algo estivesse sempre prestes a acabar. Talvez por isso eu me apego tanto aos momentos, por achar que um dia isso tudo vai ficar apenas nas lembranças, e tenho tanto cuidado com você, na forma como eu falo principalmente, para que pelo menos isso você tenha certeza de que nunca fui ruim. Eu tenho medo de te perder, sim, mas mais do que isso, eu tenho vontade de te viver, de estar presente, de dividir tempo, de transformar esse mês em algo diferente ao seu lado, dezembro para mim, sempre foi um mês de finais, com você, eu quero que seja um mês de permanência.</p>
+                <br>
+                <p>Então se estiver lendo isso, é porque seguimos juntos, e esse é o primeiro Natal que eu passo amando alguém, isso, por si só, já me deixa imensamente feliz por ser com você.</p>
+                <br>
+                <p>Eu te vejo como um presente. A sua presença neste fim de ano fez uma diferença enorme na minha vida, eu amo estar com você, a forma como você se faz presente, mesmo à distância, seja mandando mensagem primeiro, me chamando para conversar, compartilhando algo do seu dia, seus áudios longos, ou até soltando uma pérola do nada, até as calls que vamos durante a noite e você acaba dormindo, quando falo com você e já pegou no sono, seus 'uhumm' se tornam algo verdadeiramente memoráveis kkkkk, a sua risada torna os meus dias mais alegres.</p>
+                <br>
+                <p>Você faz questão de estar aqui, e isso muda tudo.</p>
+                <br>
+                <p>Você me faz sentir visto, importante e confortável de um jeito que eu nunca tinha sentido antes, sempre me senti um figurante na vida dos outros a minha volta, mas você.. faz com que eu me sinta um protagonista, por isso eu quero ter uma história com você, uma história de amor. Relacionamentos à distância sempre me pareceram muito difíceis, mas com você isso me faz acreditar que é possível, você demonstra interesse, esforço e carinho, e isso é algo que eu recebo, e entrego de volta com todo o meu coração. Sei que nem sempre vou encontrar as palavras certas para me expressar, mas quero que você saiba que cada sentimento que existe aqui é real, cada gesto, cada conversa, cada palavra, cada riso, cada silêncio compartilhado carrega não só cuidado, mas uma parte de mim, eu estou aqui, com você, por completo. E sendo sincero, eu adoro colecionar... </p>
+                <div class="special-message" id="specialMessage">
+                    <h3>✨Momentos✨</h3>
+                    <div class="moments-gallery">
+                        <img class="moment-image" src="img/momentos/pedido.jpeg" alt="Seu pedido de namoro">
+                        <img class="moment-image" src="img/momentos/ronaldo ronaldo ronaldo.png" alt="ronaldo ronaldo ronaldo">
+                        <img class="moment-image" src="img/momentos/vai mesmo me esperar.jpg" alt="Vai mesmo me esperar?">
+                        <img class="moment-image" src="img/momentos/oi eu amo ler esse texto.png" alt="Porque você me quer?">
+                        <img class="moment-image" src="img/momentos/cabelos.jpg" alt="Coração com os seus cabelos">
+                        <img class="moment-image" src="img/momentos/retrospectiva discord.jpg" alt="Retrospectiva Discord">
+                        <img class="moment-image" src="img/momentos/filme.jpg" alt="Noite de filme 1">
+                        <img class="moment-image" src="img/momentos/protagonista.jpg" alt="Noite de filme 2">
+                        <img class="moment-image" src="img/momentos/movie night.jpg" alt="Noite de Filme 3">
+                    </div>
+                </div>                
+                <br>
+                <p>Obrigado por existir, e obrigado por ser você, talvez eu não diga isso sempre em voz alta, mas com cada pensamento silencioso, com cada sorriso bobo ao ler suas mensagens, às vezes eu fico sorrindo pro nada, e só depois percebo que é você quem está nos meus pensamentos, por esta razão te digo com a minha alma, </p>
+                <header class="header-dois">
+                    <p> eu te amo, Rafaela❤️</p>
+                </header>
+                <br>
+                <p>Você se tornou parte dos meus dias sem pedir espaço, sem forçar nada, de repente suas mensagens passaram a ser algo que eu espero, suas palavras um lugar onde eu descanso, não é exagero te chamar de porto-seguro, e sua companhia, mesmo à distância, algo que me faz sentir em casa, tanto que eu sinto um sono que vem do nada pelo conforto que me envolve ao estar com você, e é impressionante como consegue estar tão perto, mesmo não estando fisicamente aqui.</p>
+                <br>
+                <p>Teve algo que você enxergou em mim e que eu carrego com muito cuidado: a minha gentileza, e eu preciso te dizer que ela não é um esforço, nem algo que eu penso antes de fazer, simplesmente existe porque é você, porque quando se ama de verdade, cuidar vira algo natural, se eu sou gentil, é porque eu me importo com seus sentimentos, por isso que constantemente eu sinto a necessidade em te perguntar: - você está bem?. Eu presto atenção no que você sente, na forma como se expressa, no que você diz e até no que você não diz, ccuidar de você se tornou uma necessidade, minha gentileza não é apenas te tratar com educação, é tentar ser seu abrigo, é escolher palavras que te acolham, é respeitar seus tempos, seus silêncios, suas emoções, eu quero que você se sinta segura, valorizada e tranquila sendo quem você é, então nunca tenha medo de falar sobre o que pensa ou pelo que está passando, divida suas preocupações comigo, nunca vai estar exagerando ou me irritando, invada meu espaço da mesma forma que invadiu meu coração.</p>
+                <header class="header-dois">
+                    <p> O brilho dos seus olhos me encantam cada vez mais que os vejo</p>
+                    <br>
+                    <img class="moment-image-solo" src="img/momentos/o brilho do seu olhar.png" alt="O brilho dos seus olhos">
+                </header>
+                <br>
+                <p>Com você eu aprendi que gentileza também é reciprocidade, que não é só dar, mas receber, e com você, isso acontece de forma leve. Eu cuido, você cuida. Eu me entrego, você se entrega. Nada pesa, nada sobra, nada falta.</p>
+                    <img class="adesivo" src="img/icon/sonadow.png" alt="Adesivo">
+                <p>Se existe algo bonito em mim, é porque você soube enxergar, e se essa gentileza te alcança, é porque amar você me torna assim, mais atento aos detalhes, mais ouvinte, mais verdadeiro.</p>
+                <br>
+                <p>Eu valorizo demais a sua atenção, a sua presença e, acima de tudo, a reciprocidade. Essa é a palavra que nos define, antes de me apaixonar por você, eu não sabia o que era sentir essa palavra.</p>
+                <br>
+                <p>Eu e você tivemos momentos tanto bons quanto ruins, isso fortaleceu muito nossa relação, e não sei o que o futuro reserva, mas sei o que eu escolho agora: você. Escolho continuar, escolho aprender, crescer e dividir os dias ao seu lado, você é o meu primeiro pensamento quando eu acordo, até quando eu vou dormir, mesmo que seja através de uma tela, o que nos conecta vai muito além da distância.</p>
+                <br>
+                <p>Com carinho, </p>
+                <p>Caio, Cacau, Fallen, Fafallen, Rafallen</p>
+            </div>
+
+            <button class="surprise-btn" onclick="showSurprise()">
+                ✨ Uma Surpresa Especial Para Você ✨
+            </button>
+
+            <div class="special-message" id="specialMessage">
+                <h3>💖 Do Fundo Do Meu Coração 💖</h3>
+                <p>Você possui a chave da minha alma e o brilho dos meus dias. Cada momento com você é um presente que eu valorizo profundamente. Sua presença ilumina minha vida de uma forma que não consigo encontrar palavras o suficiente para me expressar.</p>
+                <br>
+                <br>
+                <header class="header-dois">
+                    <p> Você é valiosa para mim.</p>
+                </header>
+                <br>
+                <p></p>
+            </div>
+        </main>
+
+        <section class="photo-gallery">
+            <div class="photo-frame">
+                <img src="img/album/eu.jpeg" alt="Seu sorriso" onerror="this.style.display='none'; this.parentNode.innerHTML='📸<br><small>Foto 1</small>';">
+            </div>
+            <div class="photo-frame">
+                <img src="img/album/te.jpeg" alt="Seus olhos" onerror="this.style.display='none'; this.parentNode.innerHTML='💕<br><small>Foto 2</small>';">
+            </div>
+            <div class="photo-frame">
+                <img src="img/album/amo.jpeg" alt="Sua Franja" onerror="this.style.display='none'; this.parentNode.innerHTML='🌹<br><small>Foto 3</small>';">
+            </div>
+            <div class="photo-frame">
+                <img src="img/album/rafaela.jpeg" alt="Seus cabelos" onerror="this.style.display='none'; this.parentNode.innerHTML='✨<br><small>Foto 4</small>';">
+            </div>
+            <div class="photo-frame">
+                <img src="img/album/lindaaa.jpeg" alt="Maravilhosa" onerror="this.style.display='none'; this.parentNode.innerHTML='💖<br><small>Foto 5</small>';">
+            </div>
+            <div class="photo-frame">
+                <img src="img/album/oi.jpg" alt="Minha princesinha" onerror="this.style.display='none'; this.parentNode.innerHTML='🥰<br><small>Foto 6</small>';">
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>De todo o meu <span class="heart-beat">❤️</span> para o amor da minha vida</p>
+            <br>
+            <p>Eu tenho criado este presente para você, desde o começo deste mês, sempre que quiser acessar novamente para ler, você pode, vai ficar permanentemente na internet kkkkkk. Fiquei horas e horas seguidas escrevendo os códigos, linha por linha, palavra por palavra, achei que não terminaria a tempo, mas eu me esforcei, e algo no meu coração me disse que valeria a pena cada segundo digitando para você, admito, foi um pouco difícil, mas tentei deixar ele o mais bonito e agradável o possível especialmente para você, porque você merece toda a dedicação, não só do meu tempo, mas do meu coração, porque você é tudo para mim, você é o meu coração.</p>
+            <br>
+            <p>Feliz Natal, meu amor! </p>
+        </footer>
+    </div>
+
+    <script>
+        // Cursor personalizado
+        const cursor = document.querySelector('.custom-cursor, .moment-image, moment-image-solo');
+        document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
+        });
+
+        
+
+        // Função principal da surpresa
+        function showSurprise() {
+            const music = document.getElementById('bgMusic');
+            music.volume = 0;
+            music.play();
+
+            let vol = 0;
+            const fade = setInterval(() => {
+                if (vol < 0.1) {
+            vol += 0.02;
+            music.volume = vol;
+        } else {
+            clearInterval(fade);
+        }
+        }, 200);
+            const message = document.getElementById('specialMessage');
+            message.classList.add('show');
+            
+            
+            // Explosão de corações vermelhos
+            createHeartExplosion();
+            
+            // NOVA FUNÇÃO: Animação épica "TE AMO"
+            createTeAmoAnimation();
+            
+            // Vibração
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200, 100, 300]);
+            }
+            
+            // Mudança temporária da cor de fundo
+            document.body.style.background = 'linear-gradient(135deg, #ff0040, #990026, #000000, #ff1744)';
+            document.body.style.backgroundSize = '400% 400%';
+            document.body.style.animation = 'gradient-shift 2s ease infinite';
+            
+            setTimeout(() => {
+                document.body.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a0a0a 100%)';
+                document.body.style.animation = '';
+            }, 4000);
+            
+            // Criar mais partículas especiais
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createParticle(), i * 50);
+            }
+        }
+
+        // NOVA FUNÇÃO: Animação épica "TE AMO"
+        function createTeAmoAnimation() {
+            // Criar múltiplas animações "TE AMO"
+            const teAmoTexts = [
+                'EU TE AMO RAFAELA ❤️',
+                '💖 EU TE AMO MUITO 💖',
+                'EU TE AMO!',
+                '❤️ MEU CORAÇÃO ❤️',
+                'MINHA NANA',
+                '💕 MINHA YAE 💕',
+                'MINHA PRINCESA',
+                '🥰 MINHA ROSE 🥰'
+            ];
+            
+            // Animação central principal
+            const mainTeAmo = document.createElement('div');
+            mainTeAmo.innerHTML = 'TE AMO ❤️';
+            mainTeAmo.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 4rem;
+                font-weight: bold;
+                background: linear-gradient(45deg, #7b2cff, #00cfff, #7b2cff);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                z-index: 9999;
+                pointer-events: none;
+                animation: te-amo-main 4s ease-out forwards;
+                text-shadow: 0 0 20px rgba(255, 0, 64, 1));
+                filter: drop-shadow(0 0 20px rgba(0, 207, 255, 1));
+            `;
+            document.body.appendChild(mainTeAmo);
+            setTimeout(() => mainTeAmo.remove(), 4000);
+
+            // Múltiplos "EU TE AMO" flutuantes
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const teAmo = document.createElement('div');
+                    const randomText = teAmoTexts[Math.floor(Math.random() * teAmoTexts.length)];
+                    teAmo.innerHTML = randomText;
+                    
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = Math.random() * window.innerHeight;
+                    
+                    teAmo.style.cssText = `
+                        position: fixed;
+                        left: ${startX}px;
+                        top: ${startY}px;
+                        font-size: ${Math.random() * 2 + 1.5}rem;
+                        font-weight: bold;
+                        color: ${Math.random() > 0.5 ? '#7b2cff' : '#00cfff'};
+
+                        z-index: 9998;
+                        pointer-events: none;
+                        animation: te-amo-float 3s ease-out forwards;
+                        text-shadow: 0 0 15px rgba(255, 0, 64, 0.8);
+                        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+                    `;
+                    document.body.appendChild(teAmo);
+                    setTimeout(() => teAmo.remove(), 3000);
+                }, i * 200);
+            }
+
+            // Chuva de "EU TE AMO" pequenos
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const miniTeAmo = document.createElement('div');
+                    miniTeAmo.innerHTML = '💖 EU TE AMO';
+                    miniTeAmo.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 100}%;
+                        top: -50px;
+                        font-size: 1.2rem;
+                        color: #7b2cff;
+                        z-index: 9997;
+                        pointer-events: none;
+                        animation: te-amo-rain ${Math.random() * 3 + 2}s linear forwards;
+                        text-shadow: 0 0 10px rgba(255, 0, 64, 0.6);
+                    `;
+                    document.body.appendChild(miniTeAmo);
+                    setTimeout(() => miniTeAmo.remove(), 5000);
+                }, i * 150);
+            }
+
+            // Efeito de pulso na tela
+            const pulseOverlay = document.createElement('div');
+            pulseOverlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle, rgba(255, 0, 64, 0.1), transparent);
+                z-index: 9996;
+                pointer-events: none;
+                animation: love-pulse 2s ease-in-out;
+            `;
+            document.body.appendChild(pulseOverlay);
+            setTimeout(() => pulseOverlay.remove(), 2000);
+        }
+
+        // Explosão de corações vermelhos
+        function createHeartExplosion() {
+            const hearts = ['❤️', '💖', '💕', '💗', '💓', '💝', '♥️', '💘', '💙', '💜'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-explosion';
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = Math.random() * window.innerHeight + 'px';
+                    heart.style.color = Math.random() > 0.5 ? '#7b2cff' : '#00cfff';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        // Easter egg: triplo clique
+        let clickCount = 0;
+        let clickTimer;
+        
+        document.addEventListener('pointerdown', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            requestAnimationFrame(() => {
+            createClickEffect(x, y);
+        });
+            
+            // Efeito de clique vermelho  -  TROCAR PRA ROXO
+
+            // border: 2px solid #7b2cff;
+            //box-shadow: 0 0 20px rgba(123, 44, 255, 0.6);
+            
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: fixed;
+                left: ${e.clientX - 25}px;
+                top: ${e.clientY - 25}px;
+                width: 50px;
+                height: 50px;
+
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                animation: ripple-effect 0.8s ease-out forwards;
+                
+                border: 2px solid transparent;
+                background: radial-gradient(circle, rgba(123,44,255,0.4), transparent);
+                box-shadow: 0 0 25px rgba(123,44,255,0.8);
+            `;
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 800);
+        });
+
+        // Efeito parallax 3D no mouse
+        // Mousemove parallax otimizado (fluído e leve)
+        let mouseXNorm = 0;
+        let mouseYNorm = 0;
+        let parallaxPending = false;
+
+        document.addEventListener('mousemove', (e) => {
+        mouseXNorm = e.clientX / window.innerWidth;
+    mouseYNorm = e.clientY / window.innerHeight;
+
+    if (!parallaxPending) {
+        parallaxPending = true;
+        requestAnimationFrame(updateParallax);
+        }
+    });
+
+    function updateParallax() {
+        const cards = document.querySelectorAll('.photo-frame');
+        cards.forEach((card, index) => {
+            const speed = (index + 1) * 0.015;
+            const x = (mouseXNorm - 0.5) * 20 * speed;
+            const y = (mouseYNorm - 0.5) * 20 * speed;
+
+        card.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        });
+    parallaxPending = false;
+    }
+
+    
+
+        // Efeito de scroll suave
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            
+            document.querySelector('.wave-bg').style.transform = `translateY(${rate}px) scale(1.1)`;
+            
+            // Parallax das partículas
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                const speed = (index % 3 + 1) * 0.1;
+                particle.style.transform = ` translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Sistema de notificações românticas dark
+        const romanticMessages = [
+            "🗝️ Você tem a chave do meu mundo",
+            "🌹 Cada sorriso  com você é sincero",
+            "⚜️ Minha princesinha",
+            "💖 Você é o meu coração",
+            "💕 Eu amo a sua companhia",
+            "✨ Seu sorriso brilha como as estrelas",
+            "💘 Você é o amor para a minha vida, Rafaela"
+        ];
+
+        function showNotification() {
+            const notification = document.createElement('div');
+            const message = romanticMessages[Math.floor(Math.random() * romanticMessages.length)];
+            
+            notification.innerHTML = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #7b2cff, #00cfff);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-weight: 600;
+                z-index: 9999;
+                box-shadow: 0 10px 30px rgba(0, 207, 255, 0.4);
+                animation: notification-slide 4s ease-in-out forwards;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(123, 44, 255, 0.3);
+            `;
+            
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 4000);
+        }
+
+        // Mostrar notificações aleatórias
+        setInterval(showNotification, 18000);
+
+        // Sistema de música ambiente visual (dark theme)
+        function createSoundWave() {
+            const wave = document.createElement('div');
+            wave.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                width: 4px;
+                height: ${Math.random() * 50 + 10}px;
+                background: linear-gradient(to top, #7b2cff, #00cfff);
+                border-radius: 2px;
+                animation: sound-wave 0.5s ease-in-out infinite alternate;
+                margin-right: 2px;
+                box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+            `;
+            
+            const container = document.querySelector('.sound-visualizer') || createSoundContainer();
+            container.appendChild(wave);
+            
+            setTimeout(() => wave.remove(), 1000);
+        }
+
+        function createSoundContainer() {
+            const container = document.createElement('div');
+            container.className = 'sound-visualizer';
+            container.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                display: flex;
+                align-items: end;
+                z-index: 1000;
+                gap: 2px;
+            `;
+            document.body.appendChild(container);
+            return container;
+        }
+
+        // Ativar visualizador de som
+        let soundActive = false;
+
+        function toggleSoundVisualizer(active) {
+            soundActive = active;
+        }
+        function soundLoop() {
+            if (soundActive) createSoundWave();
+            requestAnimationFrame(soundLoop);
+        }
+        soundLoop();
+
+        
+        // Sistema de conquistas (easter eggs)
+        let achievements = {
+            firstClick: false,
+            tripleClick: false,
+            longHover: false,
+            allPhotosHovered: false
+        };
+
+
+        function showAchievement(title, description) {
+            const achievement = document.createElement('div');
+            achievement.innerHTML = `
+                <div style="font-size: 1.5rem; margin-bottom: 5px;">${title}</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">${description}</div>
+            `;
+            achievement.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(45deg, #ff0040, #990026);
+                color: white;
+                padding: 20px 30px;
+                border-radius: 15px;
+                text-align: center;
+                z-index: 9999;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+                animation: achievement-popup 3s ease-in-out forwards;
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(255, 0, 64, 0.3);
+            `;
+            
+            document.body.appendChild(achievement);
+            setTimeout(() => achievement.remove(), 3000);
+        }
+
+        // Observador de interseção para animações
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Inicialização quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observar elementos para animação
+            const elements = document.querySelectorAll('.photo-frame, .special-message');
+            elements.forEach(el => observer.observe(el));
+            
+            // Criar partículas iniciais
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createParticle(), i * 300);
+            }
+            
+            // Primeira notificação
+            setTimeout(showNotification, 5000);
+            
+            // Efeito de entrada suave
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Adicionar CSS para animações extras
+        const extraStyles = document.createElement('style');
+        extraStyles.textContent = `
+            @keyframes ultra-text {
+                0% { 
+                    opacity: 0; 
+                    transform: translate(-50%, -50%) scale(0) rotate(0deg); 
+                }
+                50% { 
+                    opacity: 1; 
+                    transform: translate(-50%, -50%) scale(1.2) rotate(180deg); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: translate(-50%, -50%) scale(0) rotate(360deg); 
+                }
+            }
+            
+            @keyframes ripple-effect {
+                0% { 
+                    transform: scale(0); 
+                    opacity: 1; 
+                }
+                100% { 
+                    transform: scale(4); 
+                    opacity: 0; 
+                }
+            }
+            
+            @keyframes notification-slide {
+                0% { 
+                    transform: translateX(100%); 
+                    opacity: 0; 
+                }
+                10%, 90% { 
+                    transform: translateX(0); 
+                    opacity: 1; 
+                }
+                100% { 
+                    transform: translateX(100%); 
+                    opacity: 0; 
+                }
+            }
+            
+            @keyframes sound-wave {
+                0% { height: 10px; }
+                100% { height: 50px; }
+            }
+            
+            @keyframes te-amo-main {
+                0% { 
+                    opacity: 0; 
+                    transform: translate(-50%, -50%) scale(0) rotate(0deg); 
+                    background-position: 0% 50%;
+                }
+                20% { 
+                    opacity: 1; 
+                    transform: translate(-50%, -50%) scale(1.5) rotate(5deg); 
+                    background-position: 100% 50%;
+                }
+                40% { 
+                    transform: translate(-50%, -50%) scale(1.2) rotate(-3deg); 
+                    background-position: 0% 50%;
+                }
+                60% { 
+                    transform: translate(-50%, -50%) scale(1.3) rotate(2deg); 
+                    background-position: 100% 50%;
+                }
+                80% { 
+                    transform: translate(-50%, -50%) scale(1.1) rotate(0deg); 
+                    background-position: 0% 50%;
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: translate(-50%, -50%) scale(0.5) rotate(0deg); 
+                    background-position: 100% 50%;
+                }
+            }
+            
+            @keyframes te-amo-float {
+                0% { 
+                    opacity: 0; 
+                    transform: scale(0) rotate(0deg); 
+                }
+                20% { 
+                    opacity: 1; 
+                    transform: scale(1.2) rotate(10deg); 
+                }
+                50% { 
+                    opacity: 1; 
+                    transform: scale(1) rotate(-5deg) translateY(-20px); 
+                }
+                80% { 
+                    opacity: 1; 
+                    transform: scale(1.1) rotate(5deg) translateY(-40px); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: scale(0.5) rotate(0deg) translateY(-60px); 
+                }
+            }
+            
+            @keyframes te-amo-rain {
+                0% { 
+                    opacity: 0; 
+                    transform: translateY(-50px) rotate(0deg) scale(0.8); 
+                }
+                10% { 
+                    opacity: 1; 
+                    transform: translateY(0px) rotate(10deg) scale(1); 
+                }
+                90% { 
+                    opacity: 1; 
+                    transform: translateY(calc(100vh - 100px)) rotate(-10deg) scale(0.9); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: translateY(100vh) rotate(0deg) scale(0.5); 
+                }
+            }
+            
+            @keyframes love-pulse {
+                0% { 
+                    opacity: 0; 
+                    transform: scale(0.8); 
+                }
+                50% { 
+                    opacity: 1; 
+                    transform: scale(1.2); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: scale(1.5); 
+                }
+            }
+            
+            .animate-in {
+                animation: slideUp 0.8s ease-out forwards;
+            }
+        `;
+        
+    </script>
+
+    <script>document.head.appendChild(extraStyles);
+
+        console.log('oieuamovoce✨');
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+
+        // efeito de zoom nas imagens da galeria
+        document.querySelectorAll('.photo-frame img, .moment-image, .moment-image-solo').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImg.src = img.src;
+                modal.classList.add('show');
+            });
+        });
+
+        modal.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    </script>
+<!-- Música romântica -->
+<audio id="bgMusic" loop>
+    <source src="musica/musica.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
