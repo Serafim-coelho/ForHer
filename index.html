@@ -1111,6 +1111,10 @@
                     <img class="adesivo" src="img/icon/casquinha.png" alt="Adesivo Sorvete">
                 <p>Com certeza o sorvete de chocolate irá passar a ser o meu sabor favorito após tomar ele contigo, o sabor seria mais uma das preferências e costumes que eu agregaria de você, a mim, as principais que adqueri nesse tempo com você, é trocar o perfil do Discord, escrevertudojuntoasfrases, as metadinhas que eu não usava desde 2023, voltei a usar com você, oque sinceramente pra mim o perfil sempre seria o mesmo por meses, mas você está me mudando.. esses dias eu mesmo tenho mandado algumas ideias de metadinhas novas kkkkk, sinto q também devo comentar sobre a sua pasta no Pinterest que compartilhou comigo, vamos adicionar muitas outras lá, e o principal, seu 'oi', uma saudação tão simples, agora tem um peso tão grande na minha vida, nunca irei deixar de usar, as vezes repetimos isso em call o oi oi oi oi, até o assunto surgir, as vezes acho que você fica repetindo oi oi oi, até que eu falei algo q vc espera e acho que gosta de ouvir logo em seguida, 'oi amor', ao menos é o que eu acho, sinto você fica toda bobinha quando tento ser fofo com você kkkkk e sendo sincero, eu gosto de ficar boiolinha em call ou por mensagem, é bom, e muito.</p>
                 <br>
+                <button class="surprise-btn" onclick="showSurprise()"> 
+                    Esta música eu dedico a ti 
+                </button>
+                <br>
                 <p>Ainda no dia de hoje, assistimos mais uma das suas séries favoritas, Stranger Things, tanto que estou escrevendo isso exatamente enquanto assisto com você, (a conversa que o Nancy e a Jonathan tiveram em cima da mesa.. o pedido de casamento que ele fez realmente foi emocionante, tanto q vc parece estar emocionada ao ver isso agora? Kaksks) a série realmente é muito boa, eu gostei, da mesma forma que gostei de Alice In Bortherlands, quero assistir tudo com você, ainda paramos no final da segunda temporada, é provavelmente teremos bastante tempo para terminar de assistir esse ano.</p>
         </main>
 
@@ -1147,9 +1151,9 @@
         <footer class="footer">
             <p>De todo o meu <span class="heart-beat">❤️</span> para o amor da minha vida</p>
             <br>
-            <p>Eu tenho criado este presente para você, desde o começo deste mês, sempre que quiser acessar novamente para ler, você pode, vai ficar permanentemente na internet kkkkkk. Fiquei horas e horas seguidas escrevendo os códigos, linha por linha, palavra por palavra, achei que não terminaria a tempo, mas eu me esforcei, e algo no meu coração me disse que valeria a pena cada segundo digitando para você, admito, foi um pouco difícil, mas tentei deixar ele o mais bonito e agradável o possível especialmente para você, porque você merece toda a dedicação, não só do meu tempo, mas do meu coração, porque você é tudo para mim, você é o meu coração.</p>
+            <p>Eu tenho criado este presente para você, desde o começo de dezembro, sempre que quiser acessar novamente para ler, você pode, vai ficar permanentemente na internet kkkkkk. Fiquei horas e horas seguidas escrevendo os códigos, linha por linha, palavra por palavra, achei que não terminaria a tempo, mas eu me esforcei, e algo no meu coração me disse que valeria a pena cada segundo digitando para você, admito, foi um pouco difícil, mas tentei deixar ele o mais bonito e agradável o possível especialmente para você, porque você merece toda a dedicação, não só do meu tempo, mas do meu coração, porque você é tudo para mim, você é o meu coração.</p>
             <br>
-            <p>Feliz Natal, meu amor! </p>
+            <p>Tudo o que está aqui, é para você, meu amor! </p>
         </footer>
     </div>
 
@@ -1163,8 +1167,50 @@
         
 
         // Função principal da surpresa
+        //PRIMEIRA MÚSICA
         function showSurprise() {
             const music = document.getElementById('bgMusic');
+            music.volume = 0;
+            music.play();
+
+            let vol = 0;
+            const fade = setInterval(() => {
+                if (vol < 0.1) {
+            vol += 0.02;
+            music.volume = vol;
+        } else {
+            clearInterval(fade);
+        }
+        }, 200);
+            const message = document.getElementById('specialMessage');
+            message.classList.add('show');
+            
+            
+            // Explosão de corações vermelhos
+            createHeartExplosion();
+            
+            // NOVA FUNÇÃO: Animação épica "TE AMO"
+            createTeAmoAnimation();
+            
+            // Mudança temporária da cor de fundo
+            document.body.style.background = 'linear-gradient(135deg, #ff0040, #990026, #000000, #ff1744)';
+            document.body.style.backgroundSize = '400% 400%';
+            document.body.style.animation = 'gradient-shift 2s ease infinite';
+            
+            setTimeout(() => {
+                document.body.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a0a0a 100%)';
+                document.body.style.animation = '';
+            }, 4000);
+            
+            // Criar mais partículas especiais
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createParticle(), i * 50);
+            }
+        }
+
+        //SEGUNDA MÚSICA
+        function showSurprise() {
+            const music = document.getElementById('MusicDedication');
             music.volume = 0;
             music.play();
 
@@ -1208,13 +1254,14 @@
             // Criar múltiplas animações "TE AMO"
             const teAmoTexts = [
                 'EU TE AMO RAFAELA ❤️',
-                '💖 EU TE AMO MUITO 💖',
+                'EU TE AMO MUITO 💖',
                 'EU TE AMO!',
                 '❤️ MEU CORAÇÃO ❤️',
                 'MINHA NANA',
                 '💕 MINHA YAE 💕',
                 'MINHA PRINCESA',
-                '🥰 MINHA ROSE 🥰'
+                '🥰 MINHA ROSE 🥰',
+                'MEU TUDO'
             ];
             
             // Animação central principal
@@ -1737,6 +1784,9 @@
 <!-- Música romântica -->
 <audio id="bgMusic" loop>
     <source src="musica/musica.mp3" type="audio/mpeg">
+</audio>
+<audio id="MusicDedication" loop>
+    <source src="musica/" type="audio/mpeg">
 </audio>
 
 </body>
