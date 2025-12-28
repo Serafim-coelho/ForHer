@@ -229,10 +229,16 @@
         }
 
         .adesivo2 {
-            width: 600px;
             display: block;
-            margin: 0 auto 40px;
-            animation: adesivo-bounce 3s ease-in-out infinite;
+
+            width: 100%;
+            max-width: 340px;   /* desktop */
+            min-width: 240px;   /* celular */
+
+            height: auto;
+            margin: 24px auto;
+
+            object-fit: contain;
         }
 
         /* Efeito de ondas dark */
