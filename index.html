@@ -1073,7 +1073,7 @@
                 <p>Caio, Cacau, Fallen, Fafallen, Rafallen</p>
             </div>
 
-            <button class="surprise-btn" onclick="showSurprise()">
+            <button class="surprise-btn" onclick="showSurprise1()">
                 ✨ Uma Surpresa Especial Para Você ✨
             </button>
 
@@ -1111,8 +1111,11 @@
                     <img class="adesivo" src="img/icon/casquinha.png" alt="Adesivo Sorvete">
                 <p>Com certeza o sorvete de chocolate irá passar a ser o meu sabor favorito após tomar ele contigo, o sabor seria mais uma das preferências e costumes que eu agregaria de você, a mim, as principais que adqueri nesse tempo com você, é trocar o perfil do Discord, escrevertudojuntoasfrases, as metadinhas que eu não usava desde 2023, voltei a usar com você, oque sinceramente pra mim o perfil sempre seria o mesmo por meses, mas você está me mudando.. esses dias eu mesmo tenho mandado algumas ideias de metadinhas novas kkkkk, sinto q também devo comentar sobre a sua pasta no Pinterest que compartilhou comigo, vamos adicionar muitas outras lá, e o principal, seu 'oi', uma saudação tão simples, agora tem um peso tão grande na minha vida, nunca irei deixar de usar, as vezes repetimos isso em call o oi oi oi oi, até o assunto surgir, as vezes acho que você fica repetindo oi oi oi, até que eu falei algo q vc espera e acho que gosta de ouvir logo em seguida, 'oi amor', ao menos é o que eu acho, sinto você fica toda bobinha quando tento ser fofo com você kkkkk e sendo sincero, eu gosto de ficar boiolinha em call ou por mensagem, é bom, e muito.</p>
                 <br>
-                <button class="surprise-btn" onclick="showSurprise()"> 
-                    Esta música eu dedico a ti 
+                <p>Eu adoro quando você me chama de 'meu amor', 'amor', 'meu bem', 'meu anjo', 'meu príncipe', são palavras que me fazem sentir especial, amado, e cuidado, eu adoro te chamar assim também, e sempre que puder, farei isso, porque você merece ouvir o quanto é importante para mim. Essas palavras carregam todo o carinho e afeto que sinto por você, e eu quero que você saiba que cada vez que eu digo isso, é com todo o meu coração.</p>
+                <br>
+                <p>Com certeza, você é o meu tudo, Rafaela, algo que quero deixar claro para você também, dedico a ti mais uma música que, ao ouvir, me trás algo a memória, você </p>
+                <button class="surprise-btn" onclick="showSurprise2()"> 
+                    🎶 
                 </button>
                 <br>
                 <p>Ainda no dia de hoje, assistimos mais uma das suas séries favoritas, Stranger Things, tanto que estou escrevendo isso exatamente enquanto assisto com você, (a conversa que o Nancy e a Jonathan tiveram em cima da mesa.. o pedido de casamento que ele fez realmente foi emocionante, tanto q vc parece estar emocionada ao ver isso agora? Kaksks) a série realmente é muito boa, eu gostei, da mesma forma que gostei de Alice In Bortherlands, quero assistir tudo com você, ainda paramos no final da segunda temporada, é provavelmente teremos bastante tempo para terminar de assistir esse ano.</p>
@@ -1164,11 +1167,9 @@
         cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
         });
 
-        
-
         // Função principal da surpresa
         //PRIMEIRA MÚSICA
-        function showSurprise() {
+        function showSurprise1() {
             const music = document.getElementById('bgMusic');
             music.volume = 0;
             music.play();
@@ -1180,6 +1181,7 @@
             music.volume = vol;
         } else {
             clearInterval(fade);
+            toggleMusic(music, true);
         }
         }, 200);
             const message = document.getElementById('specialMessage');
@@ -1209,8 +1211,10 @@
         }
 
         //SEGUNDA MÚSICA
-        function showSurprise() {
+        function showSurprise2() {
             const music = document.getElementById('MusicDedication');
+            
+
             music.volume = 0;
             music.play();
 
@@ -1220,6 +1224,7 @@
             vol += 0.02;
             music.volume = vol;
         } else {
+            toggleMusic(music, true);
             clearInterval(fade);
         }
         }, 200);
@@ -1248,6 +1253,26 @@
                 setTimeout(() => createParticle(), i * 50);
             }
         }
+
+
+        function toggleMusic(music) {
+    if (music.paused) {
+        music.volume = 0.6;
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+        function toggleMusic(music, stopOthers = false) {
+    if (stopOthers) stopAllMusics();
+
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
 
         // NOVA FUNÇÃO: Animação épica "TE AMO"
         function createTeAmoAnimation() {
@@ -1783,10 +1808,11 @@
     </script>
 <!-- Música romântica -->
 <audio id="bgMusic" loop>
-    <source src="musica/musica.mp3" type="audio/mpeg">
+    <source src="musica/Her.mp3" type="audio/mpeg">
 </audio>
+
 <audio id="MusicDedication" loop>
-    <source src="musica/" type="audio/mpeg">
+    <source src="musica/Counting Stars -OneRepublic.mp3" type="audio/mpeg">
 </audio>
 
 </body>
