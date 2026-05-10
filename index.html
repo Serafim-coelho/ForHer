@@ -232,7 +232,7 @@
         }
 
         .music-button {
-            width: 300px;
+            width: 200px;
             border-radius: 30px;
             cursor: pointer;
 
@@ -254,6 +254,17 @@
         /*video do avatar*/
         .avatar-video {
             width: 440px;      /* tamanho menor */
+            max-width: 90%;    /* responsivo no celular */
+            border-radius: 20px;
+            display: block;
+            margin: 20px auto;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /*beijinho*/
+        .kiss-video {
+            width: 350px;      /* tamanho menor */
             max-width: 90%;    /* responsivo no celular */
             border-radius: 20px;
             display: block;
@@ -1302,23 +1313,12 @@
 
                 <p>Aquilo meio que já era um relacionamento, o inicio de um, porém nem eu nem você sabíamos, aos poucos estávamos construindo algo, nossas conversas sempre tinham algo diferente, foi de Genshin e outros jogos, para 'oi amor, como você está?' o avanço foi bem grande, mas ainda temos um longo caminho pela frente até chegarmos a um outro nível, o tão esperado 'te vejo em casa meu bem'. <br> e bom, eu não sei exatamente como vai ser o futuro.. mas se você estiver nele, eu já sei que vai valer a pena. Acredite, nós vamos ter isso, o nosso nós.</p>
                 <br>
-                <p>Você não sabe bem o motivo de eu ser tão preocupado contigo então, vou tentar te explicar um pouco mais, até porque essa é uma das minhas formas de amar, te amar pra ser mais específico, não sou assim com mais ninguém, nem familiares, posso até dizer q te vejo bem mais q família kk talvez porque com vc tudo em mim fique mais atento, reparo mais, penso demais, sinto demais, não é por desconfiança nem controle, é o meu cuidado mesmo, o tipo de cuidado que nasceu em mim quando quando você virou a minha paz, e eu preciso proteger isso, me preocupo porque te imagino nos detalhes, se você comeu direito, se descansou, dormiu bem, se algo te cansou mais do que devia, se tomou banho ksksks e acho engraçado como você ocupa meus pensamentos, esses espaços sejam breves ou longos do meu dia.</p>
-
-
-                <button class="surprise-btn" onclick="showSurprise3()" img class="adesivo2" src="img/icon//cat-music.webp" alt="Gatinho fofo"> 
-                    <img class="adesivo3" src="img/icon/cat-music.jpg" alt="Gatinho fofo"> 
-                </button>
-
-
+                <p>Você não sabe bem o motivo de eu ser tão preocupado contigo então, vou tentar te explicar um pouco mais, até porque essa é uma das minhas formas de amar, te amar pra ser mais específico, não sou assim com mais ninguém, nem familiares, posso até dizer q te vejo bem mais q família kk talvez porque com vc tudo em mim fique mais atento, reparo mais, penso demais, sinto demais, não é por desconfiança nem controle, é o meu cuidado mesmo, o tipo de cuidado que nasceu em mim quando quando você virou a minha paz, e eu preciso proteger isso, me preocupo porque te imagino nos detalhes, se você comeu direito, se descansou, dormiu bem, se algo te cansou mais do que devia, se tomou banho ksksks e acho engraçado como você ocupa meus pensamentos, esses espaços sejam breves ou longos do meu dia, até quandp ouço uma música que me faz pensar em ti.</p>
                 <div class="music-player">
+                    
                 <!-- Figurinha / botão -->
                 <img 
-                    src="img/icon/cat-music.jpg" 
-                    alt="Tocar música"
-                    class="music-button"
-                    onclick="showSurprise3()"
-                >
-
+                    src="img/icon/cat-music.jpg" alt="Tocar música" class="music-button" onclick="showSurprise3()">
                 <audio id="bg-music">
                     <source src="musica/I Wanna Be Yours [nyuo9-OjNNg].mp3" type="audio/mp3">
                 </audio>
@@ -1330,16 +1330,23 @@
                 <p>Fico pensando em quem eu era antes de você, e não no sentido triste ou vazio, mas no sentido de incompleto, não porque faltava algo, mas porque ainda não existia você na minha rotina, na minha vida no geral, nenhuma outra presença chegou para preencher buracos, chegam para ampliar o mundo</p>
                 <br>
                 <header class="header-dois">
-                    <p> e você ampliou o meu ♡</p>
+                    <p>e você ampliou o meu, ó minha Clematis ♡</p>
+                    <div class="video-container">
+                        <video id="avatar-video" class="avatar-video" controls playsinline preload="metadata">
+                            <source src="videos/mizisua perfil.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <br>
                 </header>
                 <p>A forma como eu vejo os dias, as pequenas coisas, os detalhes que antes passavam despercebidos. Você me ensinou, sem perceber, que amor não é só intensidade, é constância, é cuidado nos gestos simples, é atenção nos dias comuns, é a  mensagem de bom dia, é a mensagem de boa noite, é permanência mesmo quando tudo parece quieto demais, é o seu 'oi' que quebra o meu silêncio.</p>
                 <br>
                 <p>Eu amo você de um jeito que não é barulhento, mas é profundo, de um jeito que não precisa se provar, porque simplesmente é. Amo você nos seus dias leves, quando seu sorriso parece iluminar tudo ao redor, e amo você nos dias difíceis, quando o mundo pesa um pouco mais nos seus ombros e tudo o que eu queria era poder aliviar esse peso só ouvir o som doce da sua voz, ver o brilho do seu olhar, sua risada contagiante, amo cada parte de você, porque cada parte é única e especial para mim.</p>
                 <br>
-                    <video autoplay muted loop class="w-full h-full object-cover"autoplay muted loop class="w-full h-full object-cover" controls width="250">
+                <div class="video-container">
+                    <video id="kiss-video" class="kiss-video" autoplay muted loop controls width="250">
                         <source src="videos/kiss.mp4" type="video/mp4" alt="beijinho">
                     </video>
+                </div>
                 <br>
                 <br>
                 <p>Eu amo quem você é quando está feliz, mas também amo quem você é quando está cansada, confusa, insegura, vulnerável, porque você é inteira em todas as versões, e todas elas são dignas de amor. <br> (até quando ta bravinha comigo e manda eu me matar ou tomar no cu 🙄 -- kdskakdsakdk​)</p>
@@ -2161,6 +2168,13 @@
             }
         `;
         
+    </script>
+
+    <script>
+        const video = document.getElementById("avatar-video");
+        video.addEventListener("loadedmetadata", () => {
+            video.volume = 0.10;
+        });
     </script>
 
     <script>document.head.appendChild(extraStyles);
