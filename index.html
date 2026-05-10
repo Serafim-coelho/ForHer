@@ -225,6 +225,32 @@
 
 
 
+        .music-player {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .music-button {
+            width: 300px;
+            border-radius: 30px;
+            cursor: pointer;
+
+            border: 3px solid #00d9ff;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+
+            transition: 0.3s ease;
+        }
+
+        .music-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.8);
+        }
+
+
+
+
+
         /*video do avatar*/
         .avatar-video {
             width: 440px;      /* tamanho menor */
@@ -1277,9 +1303,27 @@
                 <p>Aquilo meio que já era um relacionamento, o inicio de um, porém nem eu nem você sabíamos, aos poucos estávamos construindo algo, nossas conversas sempre tinham algo diferente, foi de Genshin e outros jogos, para 'oi amor, como você está?' o avanço foi bem grande, mas ainda temos um longo caminho pela frente até chegarmos a um outro nível, o tão esperado 'te vejo em casa meu bem'. <br> e bom, eu não sei exatamente como vai ser o futuro.. mas se você estiver nele, eu já sei que vai valer a pena. Acredite, nós vamos ter isso, o nosso nós.</p>
                 <br>
                 <p>Você não sabe bem o motivo de eu ser tão preocupado contigo então, vou tentar te explicar um pouco mais, até porque essa é uma das minhas formas de amar, te amar pra ser mais específico, não sou assim com mais ninguém, nem familiares, posso até dizer q te vejo bem mais q família kk talvez porque com vc tudo em mim fique mais atento, reparo mais, penso demais, sinto demais, não é por desconfiança nem controle, é o meu cuidado mesmo, o tipo de cuidado que nasceu em mim quando quando você virou a minha paz, e eu preciso proteger isso, me preocupo porque te imagino nos detalhes, se você comeu direito, se descansou, dormiu bem, se algo te cansou mais do que devia, se tomou banho ksksks e acho engraçado como você ocupa meus pensamentos, esses espaços sejam breves ou longos do meu dia.</p>
-                <button class="surprise-btn" onclick="showSurprise3()"> 
-                    🎶 
+
+
+                <button class="surprise-btn" onclick="showSurprise3()" img class="adesivo2" src="img/icon//cat-music.webp" alt="Gatinho fofo"> 
+                    <img class="adesivo3" src="img/icon/cat-music.jpg" alt="Gatinho fofo"> 
                 </button>
+
+
+                <div class="music-player">
+                <!-- Figurinha / botão -->
+                <img 
+                    src="img/icon/cat-music.jpg" 
+                    alt="Tocar música"
+                    class="music-button"
+                    onclick="showSurprise3()"
+                >
+
+                <audio id="bg-music">
+                    <source src="musica/I Wanna Be Yours [nyuo9-OjNNg].mp3" type="audio/mp3">
+                </audio>
+
+            </div>
                 <br>
                 <p>Tem gente que passa, tem gente que fica, e tem gente que marca nossa vida, só  de se fazer presente nela, você faz isso sem esforço mesmo chegando de surpresa, não imaginava que iria gostar tanto de alguém assim, e é natural, é só você sendo você, talvez por isso eu diga que te vejo mais que família, porque família nem sempre escolhemos, mas você eu escolhi, e escolho todos os dias, e se às vezes eu pareço exagerado, é só porque meu jeito de amar é assim, atento, presente, inteiro, até enchendo seu saco KKKKKKKK eu não sei amar pouco e me recuso a amar pela metade, se for pra te amar, que seja com tudo que há em mim, eu me importo demais com você, e isso fica ainda mais claro quando percebo alguma mudança mesmo que sutil ou pequena em ti, nada passa despercebido, as vezes faço uma tempestade no copo d'água, mesmo sendo algo pequeno com você se torna gigante justamente por sentir demais, se isso às vezes transborda, é porque você importa pra mim, muito mais do que eu consigo esconder.</p>
                 <br>
@@ -1380,7 +1424,7 @@
                     <p>nós dois.</p>
                 </header>
                 <img class="moment-image-solo" src="img/momentos - 2/rafallen e fafallen.png" alt="rafallen e fafallen">
-                <span class="heart-beat">❤️</span> <span class="heart-beat">❤️</span> <span class="heart-beat">❤️</span> <span class="heart-beat">❤️</span> <span class="heart-beat">❤️</span>
+                <span class="heart-beat">💜</span> <span class="heart-beat">💙</span> <span class="heart-beat">💜</span> <span class="heart-beat">💙</span> <span class="heart-beat">💜</span> <span class="heart-beat">💙</span>
                 <br>
                 <p>Com todo o carinho,</p>
                 <p>com todo o cuidado,</p>
