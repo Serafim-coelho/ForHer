@@ -1090,8 +1090,8 @@
         }
 
         .discord-avatar {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;      /* avatar redondinho estilo Discord */
             object-fit: cover;
 
@@ -1112,8 +1112,8 @@
         }
         @media (max-width: 480px) {
             .discord-avatar {
-            width: 110px;
-            height: 110px;
+            width: 150px;
+            height: 150px;
             }
             .discord-profiles {
             gap: 18px;
@@ -1151,6 +1151,204 @@
                 opacity: 0;
             }
         }
+
+
+
+        /* MODAL */
+
+    .cartas-modal {
+
+        display: none;
+        position: fixed;
+
+        z-index: 9999;
+
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: rgba(0, 0, 0, 0.45);
+
+        backdrop-filter: blur(6px);
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+    }
+
+
+
+    /* CAIXA */
+
+    .modal-content {
+
+        background: #111827;
+
+        width: 100%;
+        max-width: 700px;
+
+        padding: 30px;
+
+        border-radius: 25px;
+
+        border: 2px solid #9333ea;
+
+        box-shadow: 0 0 25px rgba(147, 51, 234, 0.5);
+
+        position: relative;
+
+        color: white;
+
+        position: relative;
+    }
+
+
+
+    /* FECHAR */
+
+    .close-button {
+
+        position: absolute;
+
+        top: 15px;
+        right: 15px;
+
+        width: 45px;
+        height: 45px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 32px;
+
+        color: white;
+
+        cursor: pointer;
+
+        z-index: 10000;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        backdrop-filter: blur(4px);
+
+        transition: 0.3s;
+    }
+
+    .close-button:hover {
+
+        transform: scale(1.08);
+
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+
+
+    /* TITULO */
+
+    .titulo-cartas {
+
+        text-align: center;
+
+        margin-bottom: 30px;
+
+        color: white;
+    }
+
+
+
+    /* BOTÕES */
+
+    .buttons-cartas {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+
+    .carta-button {
+
+        padding: 18px;
+
+        border: none;
+
+        border-radius: 15px;
+
+        background: linear-gradient(90deg, #7c3aed, #9333ea);
+
+        color: white;
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+    }
+
+
+
+    .carta-button:hover {
+
+        transform: scale(1.03);
+
+        box-shadow: 0 0 20px rgba(147, 51, 234, 0.6);
+    }
+
+
+
+    /* BOTÃO PRINCIPAL */
+
+    .open-button {
+        padding: 22px 50px;
+        font-size: 26px;
+        border: none;
+        border-radius: 20px;
+        background: linear-gradient(90deg, #7c3aed, #9333ea);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+    }
+
+    .open-button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 35px rgba(147, 51, 234, 0.9);
+    }
+
+
+
+    /* TEXTO DAS CARTAS */
+    .carta-content {
+        max-height: 80vh;
+        overflow-y: auto;
+        line-height: 1.8;
+    }
+
+    .carta-content h2 {
+        color: #4952d4;
+        text-shadow:
+            0 0 10px rgba(65, 137, 245, 0.7),
+            0 0 20px rgba(25, 191, 233, 0.5);
+        text-align: center;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+        .modal-content {
+            padding: 20px;
+        }
+    }
     </style>
 </head>
 
@@ -1174,15 +1372,11 @@
 
     <div class="image-modal" id="imageModal">
         <img id="modalImg" src="">
-    </div>
-                
+    </div>  
 
     <!-- Icones do Discord-->
 
-
-
-
-    <!--                       Para <span class="girlfriend-name"></span>         -->
+    <!--        Para <span class="girlfriend-name"></span>         -->
     <div class="container">
         <header class="header">
             <br>
@@ -1190,12 +1384,67 @@
         <img class="discord-avatar" src="img/icon/columbina match.jpg" alt="Meu perfil">
         <img class="discord-avatar" src="img/icon/sandrone match.jpg" alt="Perfil dela">
     </div>
-
             <h1>Rafaela❤️</h1>
             <p>Leia com carinho, estas são as palavras do coração ❤️</p>
         </header>
         <main class="love-card">
-            <h2>Primeira Carta ❤️</h2>
+
+<br><br><br><br>
+
+<div class="letter-separator">💙 ✨ 💜</div> 
+<!-- BOTÃO PRINCIPAL -->
+<button class="open-button" onclick="openMenu()">
+    💌 Ler Cartinhas
+</button>
+
+
+<!-- MENU DAS CARTAS -->
+<div id="menu-modal" class="cartas-modal">
+
+    <div class="modal-content carta-content">
+
+        <!-- FECHAR -->
+        <span class="close-button" onclick="closeMenu()">
+            ✖
+        </span>
+
+        <h2 class="titulo-cartas">
+            Escolha uma cartinha 💜
+        </h2>
+
+        <div class="buttons-cartas">
+
+            <button class="carta-button" onclick="openCarta('carta1')">
+                🌙 Carta 1
+            </button>
+
+            <button class="carta-button" onclick="openCarta('carta2')">
+                ✨ Carta 2
+            </button>
+
+            <button class="carta-button" onclick="openCarta('carta3')">
+                💜 Carta 3
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CARTA 1 -->
+<div id="carta1" class="cartas-modal">
+
+    <div class="modal-content carta-content">
+
+        <span class="close-button" onclick="closeCarta('carta1')">
+            ✖
+        </span>
+
+        <h2>🌙 Carta 1</h2>
+
             <h2>Feliz Natal!</h2>
             <br>
             <br>
@@ -1266,18 +1515,26 @@
                 <br>
                 <p></p>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="letter-separator">❤️ ✨ ❤️</div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <header class="header-dois">
-                <h2>Segunda Carta ❤️</h2>
-                <h2>~Ano Novo!</h2>
+
+    </div>
+
+</div>
+
+
+
+<!-- CARTA 2 -->
+<div id="carta2" class="cartas-modal">
+
+    <div class="modal-content carta-content">
+
+        <span class="close-button" onclick="closeCarta('carta2')">
+            ✖
+        </span>
+
+        <h2>✨ Carta 2</h2>
+
+        <header class="header-dois">
+                <h2>~ Feliz Ano Novo!</h2>
             </header>
             <br>
             <br>
@@ -1306,20 +1563,24 @@
                 <br>
                 <p>Enfim, quero que você saiba que você é a pessoa mais especial que eu já conheci, e que eu não poderia imaginar minha vida sem você. Eu te amo profundamente, e estou sempre aqui para te apoiar e te amar. Espero que este ano seja incrível para você, e que todos os seus sonhos sejam realizados.</p>
             </div>
+    </div>
+</div>
 
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="letter-separator">❤️ ✨ ❤️</div>
-            <br>
-            <br>
-            <br>
-            <br>
 
-            <!-- Molde para proxima carta-->
+
+<!-- CARTA 3 -->
+<div id="carta3" class="cartas-modal">
+
+    <div class="modal-content carta-content">
+
+        <span class="close-button" onclick="closeCarta('carta3')">
+            ✖
+        </span>
+
+        <h2>💜 Carta 3</h2>
+
+        <!-- Molde para proxima carta-->
             <header class="header-dois">
-                <h2>Terceira Carta ❤️</h2>
                 <h2>Feliz aniversárioooo!!!</h2>
             </header>
             <br>
@@ -1454,6 +1715,10 @@
                 <br>
                 <p>Caio, Cacau, Fallen, RaFallen, oi.</p>
             </div>
+    </div>
+</div>
+<div class="letter-separator">💜 ✨ 💙</div>
+
         </main>
 
         <section class="photo-gallery">
@@ -1503,6 +1768,52 @@
             <p>Tudo o que está aqui, é para você, meu amor! </p>
         </footer>
     </div>
+
+    <script>
+        /* MENU */
+
+function openMenu() {
+
+    document.getElementById("menu-modal").style.display = "flex";
+}
+
+function closeMenu() {
+
+    document.getElementById("menu-modal").style.display = "none";
+}
+
+
+
+/* CARTAS */
+
+function openCarta(id) {
+
+    document.getElementById(id).style.display = "flex";
+}
+
+function closeCarta(id) {
+
+    document.getElementById(id).style.display = "none";
+}
+
+
+
+/* FECHAR CLICANDO FORA */
+
+window.onclick = function(event) {
+
+    const modals = document.querySelectorAll(".cartas-modal");
+
+    modals.forEach(modal => {
+
+        if (event.target == modal) {
+
+            modal.style.display = "none";
+        }
+    });
+}
+    </script>
+
 
     <script>
         // Cursor personalizado
