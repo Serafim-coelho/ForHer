@@ -1349,6 +1349,52 @@
             padding: 20px;
         }
     }
+
+    .kuromi {
+        position: fixed;
+        width: 230px;
+        z-index: 5;
+        pointer-events: none;
+        opacity: 0.95;
+        filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.5));
+        animation: floating 4s ease-in-out infinite;
+    }
+
+    /* POSIÇÕES */
+    .kuromi1 {
+        top: 120px;
+        left: 40px;
+    }
+
+    .kuromi2 {
+        top: 500px;
+        right: 50px;
+    }
+
+    .kuromi3 {
+        bottom: 120px;
+        left: 70px;
+    }
+
+    .kuromi4 {
+        bottom: 80px;
+        right: 80px;
+    }
+
+    /* ANIMAÇÃO */
+
+    @keyframes floating {
+
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
     </style>
 </head>
 
@@ -1768,6 +1814,11 @@
             <p>Tudo o que está aqui, é para você, meu amor! </p>
         </footer>
     </div>
+
+    <img src="img/kuromi/kuromi1.png" class="kuromi kuromi1">
+    <img src="img/kuromi/kuromi2.png" class="kuromi kuromi2">
+    <img src="img/kuromi/kuromi3.png" class="kuromi kuromi3">
+    <img src="img/kuromi/kuromi4.png" class="kuromi kuromi4">
 
     <script>
         /* MENU */
